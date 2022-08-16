@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
 {% import 'macros.html'  as macros %}
 {% block title %}
 {{ super() }} 
@@ -13,4 +14,9 @@ Bienvenido
     {% for todo in todos %}
         {{ macros.render_todo(todo) }}
     {% endfor %}
+
+    <div class="container">
+        {{ render_form(login_form) }}
+    </div>
+    
 {% endblock %}

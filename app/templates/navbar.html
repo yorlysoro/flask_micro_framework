@@ -20,6 +20,11 @@
                         Index
                     </a>
                 </li>
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="https://www.platzi.com/" target="_blank" >
                         Platzi

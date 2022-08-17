@@ -29,7 +29,7 @@ class MainTest(TestCase):
         #     'username': 'fake',
         #     'password': 'fake-password'
         # }
-        response = self.client.post(url_for('hello'))
+        response = self.client.get(url_for('hello'))
         self.assert200(response)
 
     def test_auth_blueprint_exist(self):

@@ -16,7 +16,7 @@ def get_users():
 
 
 def get_user(user_id):
-    return db.collection('user').document(user_id).get()
+    return db.collection('users').document(user_id).get()
 
 
 def get_todos(user_id):

@@ -1,35 +1,17 @@
-from flask import (Flask, request, make_response,
+from flask import (request, make_response,
                    redirect, render_template, session,
                    url_for, flash)
-from markupsafe import escape
-from flask_bootstrap import Bootstrap5
-from pathlib import Path
-from dotenv import load_dotenv
-import os
-from flask_wtf import FlaskForm
-from wtforms.fields import (StringField, PasswordField,
-                            SubmitField)
-from wtforms.validators import DataRequired
 import unittest
 
-BASE_DIR = Path(__file__).resolve()
-dotenv_path = os.path.join(BASE_DIR, '.env')
-load_dotenv(dotenv_path)
+from app import create_app
+from app.forms import LoginForm
 
-app = Flask(__name__)
-Bootstrap5(app)
 
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app = create_app()
 
 todos = ["Comprar Cafe",
          "Enviar Solicitud de compra",
          "Entregar video a productor"]
-
-
-class LoginForm(FlaskForm):
-    username = StringField('Nombre de usuario', validators=[DataRequired()])
-    password = PasswordField('Contraseña', validators=[DataRequired()])
-    submit = SubmitField('Enviar')
 
 
 @app.cli.command()

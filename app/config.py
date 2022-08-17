@@ -7,6 +7,5 @@ dotenv_path = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)
 
 
-class BaseConfig:
+class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SERVER_NAME = ''

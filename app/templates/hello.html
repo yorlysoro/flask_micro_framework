@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% import 'macros.html'  as macros %}
+{% from 'bootstrap5/form.html' import render_form %}
 {% block title %}
 {{ super() }} 
 Bienvenido 
@@ -13,6 +14,10 @@ Bienvenido
     {% else %}
         <a href="{{ url_for('index') }}">Index</a>
     {% endif %}
+    <div class="container">
+        <h2>Crea una nueva tarea</h2>
+        {{ render_form(todo_form) }}
+    </div>
     {% for todo in todos %}
         {{ macros.render_todo(todo) }}
     {% endfor %}

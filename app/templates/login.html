@@ -8,5 +8,6 @@ Login
 {% block content %}
     <div class="container">
         {{ render_form(login_form) }}
+        <p>Si no posee cuenta <a href="{{ url_for('auth.signup') }}"> Registrese aqui </a></p> 
     </div>
 {% endblock %}

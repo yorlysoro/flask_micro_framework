@@ -2,6 +2,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
+
 project_id = 'platziblog-a42f6'
 creadential = credentials.ApplicationDefault()
 firebase_admin.initialize_app(creadential, {
@@ -33,4 +34,9 @@ def get_todos(user_id):
 def put_todo(user_id, description):
     todos_collection_ref = db.collection('users').document(user_id).\
         collection('todos')
-    todos_collection_ref.add({'description': description})
+    todos_collection_ref.add({'description': description, 'done': False})
+
+
+def delete_todo(user_id, todo_id):
+    todo_ref = db.document('users/{}/todos/{}'.format(user_id, todo_id))
+    todo_ref.delete()

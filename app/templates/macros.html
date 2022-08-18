@@ -1,3 +1,19 @@
-{% macro render_todo(todo) %}
- <li>Descripción: {{ todo.to_dict().description }}</li>
+{% from 'bootstrap5/form.html' import render_form %}
+{% macro render_todo(todo, delete_form) %}
+ <li class="mt-4 w-100">
+    {% if todo.to_dict().done %}
+        <span class="badge bg-success">
+            Realizada
+        </span>
+    {% else %}
+        <span class="badge bg-danger">
+            Por Hacer
+        </span>
+    {% endif %}
+    Descripción: {{ todo.to_dict().description }}
+    <div class="float-end mt-4">
+        {{ render_form(delete_form, action=url_for('delete', todo_id=todo.id)) }}
+    </div>
+    
+</li>
 {% endmacro %}

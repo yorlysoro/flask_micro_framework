@@ -18,8 +18,11 @@ Bienvenido
         <h2>Crea una nueva tarea</h2>
         {{ render_form(todo_form) }}
     </div>
-    {% for todo in todos %}
-        {{ macros.render_todo(todo) }}
-    {% endfor %}
+    <ul class="list-group m-auto w-50">
+        {% for todo in todos %}
+            {{ macros.render_todo(todo, delete_form) }}
+        {% endfor %}
+    </ul>
+    
     
 {% endblock %}
